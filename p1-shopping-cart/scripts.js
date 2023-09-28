@@ -1,23 +1,31 @@
-
-const cartSidebar = document.getElementById('cart-sidebar');
 const cartItems = document.getElementById('cart-items');
+const emptyCart = document.getElementById('empty-cart');
+const cartSummary = document.getElementById('cart-summary');
+const cartTotal = document.getElementById('total-item-count-cart');
+const cartTotalPrice = document.getElementById('cart-total-cost');
+
 let itemCount = 0;
+let priceTotal = 0;
 window.items_data = [];
 
-// Function to add a product to the cart
 function add_to_cart(product_id) {
     const product = window.items_data.find(item => item.id === product_id);
-    const cartItem = document.createElement('div');
+    const cartItem = document.createElement('li');
     cartItem.className = 'cart-item';
     cartItem.innerHTML = `
         <span>${product.title}</span> - <span>$${product.price}</span> - <a onclick="remove_from_cart(this)" href="javascript:;">X</a>
     `;
     cartItems.appendChild(cartItem);
     itemCount++;
+    priceTotal += product.price;
     document.getElementById('total-item-count').textContent = itemCount;
 
     if (itemCount > 0) {
-        cartSidebar.classList.add('show');
+        emptyCart.classList.add('hidden');
+        cartSummary.classList.remove('hidden');
+
+        cartTotal.textContent = itemCount;
+        cartTotalPrice.textContent = parseFloat(priceTotal).toFixed(2);
     }
 
 }
@@ -25,7 +33,15 @@ function add_to_cart(product_id) {
 function remove_from_cart(target) {
     target.parentElement.remove();
     itemCount--;
+    priceTotal -= parseFloat(target.parentElement.children[1].textContent.replace('$', ''));
     document.getElementById('total-item-count').textContent = itemCount;
+    cartTotal.textContent = itemCount;
+    cartTotalPrice.textContent = parseFloat(priceTotal).toFixed(2);
+
+    if (itemCount === 0) {
+        emptyCart.classList.remove('hidden');
+        cartSummary.classList.add('hidden')
+    }
 }
 
 fetch('https://fakestoreapi.com/products')
@@ -54,7 +70,6 @@ setTimeout(() => {
             var targetDiv = document.querySelector('div[data-actual-height="4"]');
     
             if (targetDiv) {
-                // Get all div elements after the target div
                 for (var i = 0; i < 1000; i++) {
                     targetDiv.nextElementSibling.remove()
                 }
@@ -63,3 +78,8 @@ setTimeout(() => {
     
     }, 1000);
 }, 5000);
+
+
+document.getElementById('floating-cart').addEventListener('click', function () {
+    window.scrollTo(0, document.body.scrollHeight);
+});

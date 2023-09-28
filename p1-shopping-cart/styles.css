@@ -42,13 +42,14 @@
     white-space: normal;
 }
 
-.floating-cart {
+#floating-cart {
     position: fixed;
     bottom: 0;
     padding-inline: 20px;
     border: 1px solid black;
     border-radius: 37px;
     padding-block: 16px;
+    cursor: pointer;
 }
 
 #total-item-count {
