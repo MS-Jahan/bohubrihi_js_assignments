@@ -1,0 +1,71 @@
+.card {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+
+.u-max-full-width {
+    max-width: auto;
+    max-height: 100px;
+    box-sizing: border-box;
+}
+
+.cut-text.p-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 280px;
+    height: 1.2em;
+    white-space: nowrap;
+}
+
+.cut-text.p-title:hover {
+    text-overflow: clip;
+    overflow: visible;
+    width: auto;
+    height: auto;
+    white-space: normal;
+}
+
+.cut-text.p-description {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 280px;
+    height: 1.2em;
+    white-space: nowrap;
+}
+
+.cut-text.p-description:hover {
+    text-overflow: clip;
+    overflow: visible;
+    width: auto;
+    height: auto;
+    white-space: normal;
+}
+
+.floating-cart {
+    position: fixed;
+    bottom: 0;
+    padding-inline: 20px;
+    border: 1px solid black;
+    border-radius: 37px;
+    padding-block: 16px;
+}
+
+#total-item-count {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding-block: 3px;
+    padding-inline: 5px;
+}
+
+.remove-btn {
+    background-color: rgb(228, 97, 97);
+}
+
+#cart-summary {
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
