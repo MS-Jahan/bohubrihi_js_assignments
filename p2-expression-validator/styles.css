@@ -1,0 +1,14 @@
+.form-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 50%;
+    border-radius: 20px;
+}
+
+#result-text {
+    background-color: rgb(238, 238, 231);
+}
+
+.hidden {
+    display: none;
+}
